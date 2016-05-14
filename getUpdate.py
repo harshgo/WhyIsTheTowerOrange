@@ -3,7 +3,7 @@ import urllib2
 import re
 
 
-def getupdate(url):
+def getUpdate(url):
 
     website = urllib2.urlopen(url)
     soup = BeautifulSoup(website, "html.parser")
