@@ -1,5 +1,5 @@
-from getUpdate import getUpdate
-from postUpdate import postUpdate
+import getUpdate
+import postUpdate
 
 from time import sleep
 
@@ -9,11 +9,11 @@ def main():
 
     while True:
 
-        reason = getUpdate(WEBSITE_URL)
+        reason = getUpdate.getUpdate(WEBSITE_URL)
 
         if reason:
 
-            postUpdate(reason)
+            postUpdate.postUpdate(reason)
 
         sleep(86400)
 
