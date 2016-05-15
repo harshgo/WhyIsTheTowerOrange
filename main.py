@@ -1,19 +1,20 @@
-import getUpdate
-import postUpdate
+from getUpdate import getUpdate
+from postUpdate import postUpdate
 
 from time import sleep
 
 WEBSITE_URL = 'http://www.whyisthetowerorange.com'
 
+
 def main():
 
     while True:
 
-        reason = getUpdate.getUpdate(WEBSITE_URL)
+        reason = getUpdate(WEBSITE_URL)
 
         if reason:
 
-            postUpdate.postUpdate(reason)
+            postUpdate(reason)
 
         sleep(86400)
 
