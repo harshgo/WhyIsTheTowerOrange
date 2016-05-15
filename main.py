@@ -1,16 +1,16 @@
-from getUpdate import getUpdate
+from getUpdate import getUpdate, getUpdate2
 from postUpdate import postUpdate
 
 from time import sleep
 
-WEBSITE_URL = 'http://www.whyisthetowerorange.com'
-
+#WEBSITE_URL = 'http://www.whyisthetowerorange.com'
+WEBSITE_URL = "tower.utexas.edu/category/updates/"
 
 def main():
 
     while True:
 
-        reason = getUpdate(WEBSITE_URL)
+        reason = getUpdate2(WEBSITE_URL)
 
         if reason:
 
