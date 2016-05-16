@@ -6,6 +6,8 @@ from time import sleep
 #WEBSITE_URL = 'http://www.whyisthetowerorange.com'
 WEBSITE_URL = "https://www.tower.utexas.edu/category/updates/"
 
+NOT_ORANGE_OR_DARK = "Uuurgh. It's a sad day. No orange tower."
+
 def main():
 
     while True:
@@ -15,6 +17,10 @@ def main():
         if reason:
 
             postUpdate(reason)
+
+        else:
+
+            postUpdate(NOT_ORANGE_OR_DARK)
 
         sleep(86400)
 
