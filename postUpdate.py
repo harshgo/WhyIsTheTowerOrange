@@ -5,11 +5,10 @@ CONSUMER_SECRET = ''
 ACCESS_TOKEN_KEY = ''
 ACCESS_TOKEN_SECRET = ''
 
-api = twitter.api(consumer_key=CONSUMER_KEY,
-                consumer_secret = CONSUMER_SECRET,
-                access_token_key = ACCESS_TOKEN_KEY,
-                access_token_secret = ACCESS_TOKEN_SECRET
-                sleep_on_rate_limit=True)
+api = twitter.Api(consumer_key=CONSUMER_KEY,
+                  consumer_secret = CONSUMER_SECRET,
+                  access_token_key = ACCESS_TOKEN_KEY,
+                  access_token_secret = ACCESS_TOKEN_SECRET)
 
 def postUpdate(reason):
 

@@ -1,10 +1,10 @@
-from getUpdate import getUpdate, getUpdate2
+from getUpdate import getUpdate2
 from postUpdate import postUpdate
 
 from time import sleep
 
 #WEBSITE_URL = 'http://www.whyisthetowerorange.com'
-WEBSITE_URL = "tower.utexas.edu/category/updates/"
+WEBSITE_URL = "https://www.tower.utexas.edu/category/updates/"
 
 def main():
 
