@@ -3,8 +3,26 @@ import urllib2
 import re
 
 CURRENT_POST_NUMBER_FILE_PATH = 'current_post_number.txt'
+PARSE_REGEXES = (re.compile('for(.*)'), re.compile('to honor(.*)'), re.compile('honors(.*)'),
+                 re.compile('symbolizes(.*)'), re.compile('celebrates(.*)'))
 
-def getTitle(n, s):
+def parse(s):
+
+    title = None
+    tower_action = None # Whether the tower is DARK or ORANGE/SHINING
+
+    for regex in PARSE_REGEXES: # TODO: Make REGEX use LOOK BEHIND to remove "for" or "to honor" etc.
+
+        match = re.search(regex, s)
+
+        if match:
+
+            title = match.group()
+
+
+
+
+def getTitleAndPostNumber(n, s):
 
     div = s.find("div", id=re.compile("post-[0-9]+"))
     current_post = int(div['id'].split('-')[1])
@@ -56,11 +74,11 @@ def getUpdate2(url):
     with open(CURRENT_POST_NUMBER_FILE_PATH) as f:
         n = int(f.readline())
 
-    title, current_post_number = getTitle(n, soup)
+    title, current_post_number = getTitleAndPostNumber(n, soup)
 
     if title:
 
         with open(CURRENT_POST_NUMBER_FILE_PATH, 'w+') as f:
             f.write(str(current_post_number))
 
-    return title
+    return parse(title)
