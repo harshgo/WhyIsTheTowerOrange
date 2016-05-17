@@ -13,19 +13,19 @@ def main():
 
     while True:
 
-        tower_action, reason = getUpdate2(WEBSITE_URL)
+        tower_action, reason = getUpdate2(WEBSITE_URL) # Is the tower dark or orange? If so, why? Both are None if today is a sad day.
 
-        update = createPost(tower_action, reason)
+        update = createPost(tower_action, reason) # Create a sentence (update) from the towers' status and the reason.
 
         if reason:
 
-            postUpdate(update)
+            postUpdate(update) # Post the update to Twitter
 
         else:
 
-            postUpdate(NOT_ORANGE_OR_DARK)
+            postUpdate(NOT_ORANGE_OR_DARK) # The tower is just busy towering. Today is a sad day.
 
-        sleep(86400)
+        sleep(86400) # Wait for 24 hours. Urgh.
 
 if __name__ == '__main__':
     main()
