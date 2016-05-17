@@ -3,21 +3,36 @@ import urllib2
 import re
 
 CURRENT_POST_NUMBER_FILE_PATH = 'current_post_number.txt'
-PARSE_REGEXES = (re.compile('for(.*)'), re.compile('to honor(.*)'), re.compile('honors(.*)'),
-                 re.compile('symbolizes(.*)'), re.compile('celebrates(.*)'))
+
+PARSE_REGEXES = (re.compile('(?<=for ).*'), re.compile('(?<=to honor ).*'),
+                 re.compile('(?<=honors ).*'), re.compile('(?<=symbolizes ).*'),
+                 re.compile('(?<=celebrates).*'))
+
+TOWER_REGEXES = (re.compile("orange"), re.compile("shine"), re.compile("dark"), re.compile("lighting"))
 
 def parse(s):
 
-    title = None
+    s = s.lower()
+    reason = None
     tower_action = None # Whether the tower is DARK or ORANGE/SHINING
 
-    for regex in PARSE_REGEXES: # TODO: Make REGEX use LOOK BEHIND to remove "for" or "to honor" etc.
+    for regex in PARSE_REGEXES:
 
         match = re.search(regex, s)
 
         if match:
 
-            title = match.group()
+            reason = match.group()
+
+    for regex in TOWER_REGEXES:
+
+        match = re.search(regex, s)
+
+        if match:
+
+            tower_action = match.group()
+
+    return (tower_action, reason)
 
 
 
