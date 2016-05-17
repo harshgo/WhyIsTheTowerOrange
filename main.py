@@ -1,5 +1,6 @@
 from getUpdate import getUpdate2
 from postUpdate import postUpdate
+from createPost import createPost
 
 from time import sleep
 
@@ -12,11 +13,13 @@ def main():
 
     while True:
 
-        reason = getUpdate2(WEBSITE_URL)
+        tower_action, reason = getUpdate2(WEBSITE_URL)
+
+        update = createPost(tower_action, reason)
 
         if reason:
 
-            postUpdate(reason)
+            postUpdate(update)
 
         else:
 
